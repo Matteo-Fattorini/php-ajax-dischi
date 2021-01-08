@@ -5,6 +5,7 @@
 const app = new Vue({
   el: "#body",
   data: {
+    filters : "",
     albums: new Array(),
     currentSelect: null,
   },
@@ -20,12 +21,15 @@ const app = new Vue({
 
   methods: {
     async getDisks() {
+      // if (this.filters == "") {
+      //   this.filters = "all";
+      // }
       try {
         let res = await axios.get(
           "http://localhost/php-ajax-dischi/Es-2/server.php",
           {
             params: {
-              ID: 12345,
+              filter : this.filters
             },
           }
         );

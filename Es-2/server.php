@@ -1,5 +1,13 @@
 <?php
 
+$filter = "";
+
+if ($_GET["filter"]) {
+    $filter = $_GET["filter"];
+}
+
+
+
 $db = [
     'success' => true,
     'response' =>
@@ -88,9 +96,25 @@ $db = [
 ];
 
 
+if($filter == ""){
 header('Content-Type: application/json');
 echo json_encode($db);
+} else {
+    $filDb = $db;
+    $filDb["response"] = [];
+    foreach($db as $response => $data ){
+        if(is_array($data)){
+            foreach( $data as $res){
+                if (strpos(strtolower($res["author"]), strtolower($filter)) !== false) {
+                    $filDb["response"][] = $res;
+                }
 
-?>
+              
+            }
+        }
+    }
 
+    header('Content-Type: application/json');
+    echo json_encode($filDb);
 
+}

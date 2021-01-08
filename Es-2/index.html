@@ -18,6 +18,10 @@
       <header>
         <div class="container">
           <div><img src="css/logo.png" alt="logo" /></div>
+          <div class="server-filter">
+            <input placeholder="filtra artista lato server" v-model ="filters" type="text">
+            <button @click ="getDisks()">INVIA</button>
+          </div>
           <div class="genres">
             <button @click ="currentSelect = 'Metal'">Metal</button>
             <button @click ="currentSelect = 'Rock'">Rock</button>
