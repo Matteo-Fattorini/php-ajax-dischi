@@ -21,9 +21,6 @@ const app = new Vue({
 
   methods: {
     async getDisks() {
-      // if (this.filters == "") {
-      //   this.filters = "all";
-      // }
       try {
         let res = await axios.get(
           "http://localhost/php-ajax-dischi/Es-2/server.php",
