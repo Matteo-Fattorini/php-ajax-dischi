@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <script defer src="js/main.js"></script>
+    <title>ex-dischi-musicali</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main id="body">
+      <header>
+        <div class="container">
+          <div><img src="css/logo.png" alt="logo" /></div>
+          <div class="genres">
+            <button @click ="currentSelect = 'Metal'">Metal</button>
+            <button @click ="currentSelect = 'Rock'">Rock</button>
+            <button @click ="currentSelect = 'Pop'">Pop</button>
+            <button @click ="currentSelect = 'Jazz'">Jazz</button>
+            <button @click ="currentSelect = null">TUTTI</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="cds-container container">
+        <!-- Disco ad esempio -->
+        <template >
+          <div v-for="cd in filter" class="cd">
+            <img
+              :src="cd.poster"
+              alt="logo-cd"
+            />
+            <h3>{{cd.title}}</h3>
+            <span class="author">{{cd.author}}</span>
+            <span class="year">{{cd.year}}</span>
+          </div>
+        </template>
+      </div>
+    </main>
+
+   
+  </body>
+</html>
